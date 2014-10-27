@@ -1,5 +1,6 @@
 <template name="adminUser">
 	{{#each user}}
-		<div class="post">{{username}}</div>
+		{{#if this.profile.isAdmin}}<div class="post"><b>{{username}}</b></div>
+		{{else}}<div class="post">{{username}}</div>{{/if}}
 	{{/each}}
 </template>

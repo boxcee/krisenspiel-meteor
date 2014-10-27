@@ -21,8 +21,9 @@
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">
-          <li><a href="{{pathFor 'adminPlayer'}}">Spielerverwaltung</a></li>
-          <li><a href="{{pathFor 'adminUser'}}">User-Übersicht</a></li>
+          {{#if userIsAdmin}}<li><a href="{{pathFor 'adminPlayer'}}">Spielerverwaltung</a></li>{{/if}}
+          {{#if userIsAdmin}}<li><a href="{{pathFor 'adminUser'}}">User-Übersicht</a></li>{{/if}}
+          <li><a href="{{pathFor 'addAction'}}">Handlungen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a>{{> timeCreate}}</a></li>

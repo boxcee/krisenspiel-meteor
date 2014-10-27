@@ -1,0 +1,27 @@
+<template name="playerAction">
+    {{> addAction}}
+</template>
+
+<template name="addAction">
+    <div class="post">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="action" class="col-sm-1 control-label">Handlung</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" id="action" placeholder="Handlung eingeben...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-1 control-label">Kürzel</label>
+                <div class="col-sm-1">
+                    <p class="form-control-static">{{myUser}}</p>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" id="input-tags" class="form-control selectized" value="Moritz, Karoline">
+                </div>
+            </div>
+            <button type="button" id="offen" class="btn btn-success">Offen</button>
+            <button type="button" id="geheim" class="btn btn-primary">Geheim</button>
+        </form>
+    </div>
+</template>

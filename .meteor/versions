@@ -31,6 +31,7 @@ iron:core@0.3.4
 iron:dynamic-template@0.4.1
 iron:layout@0.4.1
 iron:router@0.9.4
+jeremy:selectize@0.2.0
 jquery@1.0.1
 json@1.0.1
 livedata@1.0.11
