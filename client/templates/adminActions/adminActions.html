@@ -1,0 +1,22 @@
+<template name="adminActions">
+    {{> actionsToEdit}}
+    {{> editedActions}}
+</template>
+
+<template name="actionsToEdit">
+    {{#each actionToEdit}}
+        <div class="post" style="{{actionStatus}}">
+            {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
+                <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
+            <span class="col-sm-8">{{action}}</span>
+            <span class="col-sm-1">Platzhalter</span>
+            <span class="col-sm-2"><b>{{initiator}}</b>, {{actors}}</span>
+        </div>
+    {{/each}}
+</template>
+
+<template name="editedActions">
+    <div class="post">
+        Hi You!
+    </div>
+</template>
