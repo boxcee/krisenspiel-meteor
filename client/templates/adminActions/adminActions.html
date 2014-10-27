@@ -5,18 +5,41 @@
 
 <template name="actionsToEdit">
     {{#each actionToEdit}}
-        <div class="post" style="{{actionStatus}}">
+        <div class="post" id="actionEdit" style="{{actionStatus}}">
             {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
                 <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
-            <span class="col-sm-8">{{action}}</span>
-            <span class="col-sm-1">Platzhalter</span>
+            <span class="col-sm-7">{{action}}</span>
+            <span class="col-sm-2">{{comment}}</span>
             <span class="col-sm-2"><b>{{initiator}}</b>, {{actors}}</span>
         </div>
+        {{#if actionEdit}}
+            <div class="post" id="editDiv">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="comment" class="col-sm-1 control-label">Kommentar</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="comment">
+                        </div>
+                        <span class="col-sm-2" id="{{_id}}">
+                            <button type="button" id="ok" class="btn"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            <button type="button" id="no" class="btn"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+                            <button type="button" id="maybe" class="btn"><span class="glyphicon glyphicon-question-sign"></span></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        {{/if}}
     {{/each}}
 </template>
 
 <template name="editedActions">
-    <div class="post">
-        Hi You!
-    </div>
+    {{#each editedAction}}
+        <div class="post" style="{{actionStatus}}">
+            {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
+                <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
+            <span class="col-sm-7">{{action}}</span>
+            <span class="col-sm-2">{{comment}}</span>
+            <span class="col-sm-2"><b>{{initiator}}</b>, {{actors}}</span>
+        </div>
+    {{/each}}
 </template>

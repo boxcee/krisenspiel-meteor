@@ -85,3 +85,14 @@ Template.addAction.events({
 
     }
 });
+
+Template.addAction.rendered = function() {
+    $('#actors').selectize({
+        delimiter: ',',
+        persist: false,
+        highlight: true,
+        openOnFocus: true,
+        options: playerCount.find({fields: {username: 1}}),
+        create: true
+    });
+};
