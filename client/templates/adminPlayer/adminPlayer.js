@@ -9,6 +9,9 @@ Template.addPlayer.events({
 		e.preventDefault();
 
 		var attributes = {
+			sname: $(e.target).find('[name=sname]').val(),
+			aname: $(e.target).find('[name=aname]').val(),
+			krz: $(e.target).find('[name=krz]').val().toUpperCase(),
 			username: $(e.target).find('[name=krz]').val().toUpperCase(),
 			password: 'default',
 			profile: {
@@ -16,33 +19,23 @@ Template.addPlayer.events({
 				aname: $(e.target).find('[name=aname]').val(),
 				isAdmin: 0
 			}
-		}
+		};
 
-		// Account für Spieler/in anlegen
-
-		var userId = Meteor.call('makeUser', attributes);
-
-		var spieler = {
-			sname: $(e.target).find('[name=sname]').val(),
-			aname: $(e.target).find('[name=aname]').val(),
-			krz: $(e.target).find('[name=krz]').val().toUpperCase(),
-			playerId: userId,
-			username: $(e.target).find('[name=krz]').val().toUpperCase()
-		}
-
-		// Akteur/in anlegen
-
-		Meteor.call('addPlayer', spieler);
+		Meteor.call('addPlayer', attributes, function(err, result) {
+			if (err)
+				alert(err.reason)
+		});
 	}
 });
 
 Template.playerName.events({
 	'click .btn': function(e) {
 		e.preventDefault();
-		var geloscht = this
+		var geloscht = this;
 
-		Meteor.call('removePlayer', geloscht);
-
-		Meteor.call('deleteUser', geloscht);
+		Meteor.call('removePlayer', geloscht, function(err, result) {
+			if (err)
+				alert(err.reason)
+		});
 	}
 });
