@@ -12,6 +12,21 @@
             <span class="col-sm-2"></span>
             <span class="col-sm-2">{{actors}}</span>
         </div>
+        {{#if actionEdit}}
+            <div class="post" id="editDiv">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="comment" class="col-sm-1 control-label">Handlung</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="newAction">
+                        </div>
+                        <span class="col-sm-2" id="{{_id}}">
+                            <button type="button" id="pending" class="btn"><span class="glyphicon glyphicon-ok"></span></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        {{/if}}
     {{/each}}
 </template>
 
@@ -27,7 +42,7 @@
             <div class="form-group">
                 <label for="username" class="col-sm-1 control-label">Akteure</label>
                 <div class="col-sm-11">
-                    <input type="text" id="actors" value="Moritz, Karoline, Christian, Florian, Julian">
+                    <input type="text" id="actors" value="{{possibleActors}}">
                 </div>
             </div>
             <button type="button" id="offen" class="btn"><span class="glyphicon glyphicon-eye-open"></span> Offen </button>

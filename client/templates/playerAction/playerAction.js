@@ -1,15 +1,28 @@
-Template.addAction.helpers({
-    myUser: function() {
-        var user = Meteor.user();
-        return user.username;
-    }
-});
+function possibleActors() {
+
+    var actorArray = playerCount.find({}, {fields: {username: 1}}).fetch();
+
+    var actorString = "";
+
+    for ( i = 0; i < actorArray.length; i++)
+
+        if ( i+1 === actorArray.length)
+
+            actorString += actorArray[i].username;
+
+        else
+
+            actorString += actorArray[i].username + ",";
+
+    return actorString;
+
+}
 
 Template.displayAction.helpers({
     userAction: function() {
         var user = Meteor.user();
 
-        return playerActions.find({initiator: user.username}, {sort: {time: 1}});
+        return playerActions.find({$or: [{initiator: user.username}, {actors: user.username}]}, {sort: {time: 1}});
 
     },
     isHidden: function() {
@@ -28,6 +41,11 @@ Template.displayAction.helpers({
         else if (this.status === "maybe")
             return "background-color: #EC971F; color: white;";
 
+    },
+    actionEdit: function() {
+
+        return Session.get("editAction") === this._id;
+
     }
 });
 
@@ -37,6 +55,34 @@ $(function() {
         persist: false,
         create: true
     });
+});
+
+Template.displayAction.events({
+    'click #actionEntry': function() {
+
+        Session.set("editAction", this._id);
+
+        document.getElementById("newAction").focus();
+
+    },
+    'click button': function(e) {
+        e.preventDefault();
+
+        var targetId = e.currentTarget.id;
+
+        var action = this;
+
+        action.action += " [" + document.getElementById("newAction").value + "]";
+
+        action.status = targetId;
+
+        Meteor.call('progressAction', action, this, function (err, result) {
+            if (err)
+                alert(err.reason);
+        });
+
+        Session.set("editAction", "");
+    }
 });
 
 Template.addAction.events({
@@ -87,12 +133,12 @@ Template.addAction.events({
 });
 
 Template.addAction.rendered = function() {
-    $('#actors').selectize({
+    $('#actors').val(possibleActors()).selectize({
         delimiter: ',',
         persist: false,
         highlight: true,
         openOnFocus: true,
-        options: playerCount.find({fields: {username: 1}}),
-        create: true
+        allowEmptyOption: false,
+        create: false
     });
 };

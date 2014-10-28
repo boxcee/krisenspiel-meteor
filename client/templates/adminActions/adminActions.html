@@ -10,7 +10,7 @@
                 <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
             <span class="col-sm-7">{{action}}</span>
             <span class="col-sm-2">{{comment}}</span>
-            <span class="col-sm-2"><b>{{initiator}}</b>, {{actors}}</span>
+            <span class="col-sm-2">{{actorsString}}</span>
         </div>
         {{#if actionEdit}}
             <div class="post" id="editDiv">
@@ -21,7 +21,7 @@
                             <input type="text" class="form-control" id="comment">
                         </div>
                         <span class="col-sm-2" id="{{_id}}">
-                            <button type="button" id="ok" class="btn"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            <button type="button" id="yes" class="btn"><span class="glyphicon glyphicon-thumbs-up"></span></button>
                             <button type="button" id="no" class="btn"><span class="glyphicon glyphicon-thumbs-down"></span></button>
                             <button type="button" id="maybe" class="btn"><span class="glyphicon glyphicon-question-sign"></span></button>
                         </span>
@@ -39,7 +39,7 @@
                 <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
             <span class="col-sm-7">{{action}}</span>
             <span class="col-sm-2">{{comment}}</span>
-            <span class="col-sm-2"><b>{{initiator}}</b>, {{actors}}</span>
+            <span class="col-sm-2">{{actorsString}}</span>
         </div>
     {{/each}}
 </template>

@@ -1,10 +1,14 @@
 Template.header.helpers({
-	userIsAdmin: function() {
+	isPlayer: function() {
 		var user = Meteor.user();
-		return user.profile.isAdmin == true;
+
+		if (!user.profile.isAdmin)
+			return true;
 	},
-	userIsPlayer: function() {
+	isAdmin: function() {
 		var user = Meteor.user();
-		return user.profile.isAdmin == false;
+
+		if (user.profile.isAdmin)
+			return true;
 	}
 });
