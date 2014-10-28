@@ -9,8 +9,8 @@
         <div class="post" id="actionEntry" style="{{actionStatus}}">
             {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
                 <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
-            <span class="col-sm-7">{{action}}</span>
-            <span class="col-sm-2">{{comment}}</span>
+            <span class="col-sm-6">{{action}}</span>
+            <span class="col-sm-3">{{comment}}</span>
             <span class="col-sm-2">{{actorsString}}</span>
         </div>
         {{#if actionEdit}}
@@ -43,7 +43,7 @@
             <div class="form-group">
                 <label for="username" class="col-sm-1 control-label">Akteure</label>
                 <div class="col-sm-11">
-                    <input type="text" id="actors" value="{{possibleActors}}">
+                    <input type="text" id="actors">
                 </div>
             </div>
             <button type="button" id="offen" class="btn"><span class="glyphicon glyphicon-eye-open"></span> Offen </button>
@@ -57,8 +57,8 @@
         <div class="post" id="actionEntry" style="{{actionStatus}}">
             {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
                 <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
-            <span class="col-sm-7">{{action}}</span>
-            <span class="col-sm-2">{{comment}}</span>
+            <span class="col-sm-6">{{action}}</span>
+            <span class="col-sm-3">{{comment}}</span>
             <span class="col-sm-2">{{actorsString}}</span>
         </div>
     {{/each}}

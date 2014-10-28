@@ -62,14 +62,6 @@ Template.displayAction.helpers({
     }
 });
 
-$(function() {
-    $('#input-tags').selectize({
-        delimiter: ',',
-        persist: false,
-        create: true
-    });
-});
-
 Template.displayAction.events({
     'click #actionEntry': function() {
 
@@ -146,11 +138,6 @@ Template.addAction.events({
 Template.addAction.rendered = function() {
 
     $('#actors').val(possibleActors()).selectize({
-        delimiter: ',',
-        persist: false,
-        highlight: true,
-        openOnFocus: true,
-        allowEmptyOption: false,
         create: false
     });
 };

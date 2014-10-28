@@ -54,7 +54,7 @@ Template.actionsToEdit.events({
 
         var action = this;
 
-        if (this.comment === null)
+        if (typeof this.comment === 'undefined')
 
             action.comment = document.getElementById("comment").value;
 
