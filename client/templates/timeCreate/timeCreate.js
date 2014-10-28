@@ -29,21 +29,3 @@ Template.timeCreate.helpers({
 Template.timeCreate.destroyed = function() {
     Meteor.clearInterval(zeitInterval);
 };
-
-function timer() {
-
-    var start = new Date().getTime(),
-        elapsed = '0.0';
-
-    setInterval(function() {
-
-        var time = new Date().getTime() - start;
-
-        elapsed = Math.floor(time / 100) / 10;
-        if(Math.round(elapsed) == elapsed) { elapsed += '.0'; }
-
-        document.title = elapsed;
-
-    }, 100);
-
-}

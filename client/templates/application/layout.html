@@ -23,11 +23,11 @@
         <ul class="nav navbar-nav">
           {{#if isAdmin}}<li><a href="{{pathFor 'adminPlayer'}}">Spielerverwaltung</a></li>{{/if}}
           {{#if isAdmin}}<li><a href="{{pathFor 'adminUser'}}">User-Übersicht</a></li>{{/if}}
-          {{#if isPlayer}}<li><a href="{{pathFor 'playerAction'}}">Handlungen</a></li>{{/if}}
+          <li><a href="{{pathFor 'playerAction'}}">Handlungen</a></li>
           {{#if isAdmin}}<li><a href="{{pathFor 'adminActions'}}">Handlungsverwaltung</a></li>{{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a>{{> timeCreate}}</a></li>
+          {{#if isAdmin}}<li><a><button type="button">{{timerChange}}</button></a></li>{{/if}}
           <li><a>{{> loginButtons}}</a></li>
         </ul>
       </div>

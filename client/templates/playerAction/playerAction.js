@@ -22,7 +22,7 @@ Template.displayAction.helpers({
     userAction: function() {
         var user = Meteor.user();
 
-        return playerActions.find({$or: [{initiator: user.username}, {actors: user.username}]}, {sort: {time: 1}});
+        return playerActions.find({$or: [{initiator: user.username}, {actors: user.username}], status: {$in: ["maybe", "pending"]}}, {sort: {time: 1}});
 
     },
     isHidden: function() {
@@ -46,6 +46,19 @@ Template.displayAction.helpers({
 
         return Session.get("editAction") === this._id;
 
+    },
+    actorsString: function() {
+
+        if (this.actors[0].length < 1)
+
+            var aString = this.initiator;
+
+        else
+
+            var aString = this.initiator + ', ' + this.actors.join(', ');
+
+        return aString;
+
     }
 });
 
@@ -61,8 +74,6 @@ Template.displayAction.events({
     'click #actionEntry': function() {
 
         Session.set("editAction", this._id);
-
-        document.getElementById("newAction").focus();
 
     },
     'click button': function(e) {
@@ -133,6 +144,7 @@ Template.addAction.events({
 });
 
 Template.addAction.rendered = function() {
+
     $('#actors').val(possibleActors()).selectize({
         delimiter: ',',
         persist: false,
@@ -142,3 +154,43 @@ Template.addAction.rendered = function() {
         create: false
     });
 };
+
+Template.displayFinishedActions.helpers({
+    userAction: function() {
+
+        var user = Meteor.user();
+
+        return playerActions.find({$or: [{initiator: user.username}, {actors: user.username}], status: {$in: ["yes", "no"]}}, {sort: {time: 1}});
+
+    },
+    actionStatus: function() {
+
+        if (this.status === "pending")
+            return "background-color: #31B0D5; color: white;";
+        else if (this.status === "yes")
+            return "background-color: #449D44; color: white;";
+        else if (this.status === "no")
+            return "background-color: #C9302C; color: white;";
+        else if (this.status === "maybe")
+            return "background-color: #EC971F; color: white;";
+
+    },
+    isHidden: function() {
+
+        return this.hidden === 1;
+
+    },
+    actorsString: function() {
+
+        if (this.actors[0].length < 1)
+
+            var aString = this.initiator;
+
+        else
+
+            var aString = this.initiator + ', ' + this.actors.join(', ');
+
+        return aString;
+
+    }
+});

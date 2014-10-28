@@ -28,7 +28,7 @@ Template.actionsToEdit.helpers({
     },
     actorsString: function() {
 
-        if (this.actors.length === 0)
+        if (this.actors[0].length < 1)
 
             var aString = this.initiator;
 
@@ -54,13 +54,11 @@ Template.actionsToEdit.events({
 
         var action = this;
 
-        var newComment = "";
-
         if (this.comment === null)
 
             action.comment = document.getElementById("comment").value;
 
-        else
+        else if (document.getElementById("comment").value)
 
             action.comment += " *" + document.getElementById("comment").value + "*";
 
@@ -80,7 +78,7 @@ Template.actionsToEdit.events({
 Template.editedActions.helpers({
     editedAction: function() {
 
-        return playerActions.find({status: {$in: ["no", "yes"]}}, {sort: {time: -1}});
+        return playerActions.find({status: {$in: ["no", "yes"]}}, {sort: {time: 1}});
 
     },
     actionStatus: function() {
@@ -102,7 +100,13 @@ Template.editedActions.helpers({
     },
     actorsString: function() {
 
-        var aString = this.initiator + ', ' + this.actors.join(', ');
+        if (this.actors[0].length < 1)
+
+            var aString = this.initiator;
+
+        else
+
+            var aString = this.initiator + ', ' + this.actors.join(', ');
 
         return aString;
 

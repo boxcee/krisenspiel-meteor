@@ -1,6 +1,7 @@
 <template name="playerAction">
     {{> addAction}}
     {{> displayAction}}
+    {{> displayFinishedActions}}
 </template>
 
 <template name="displayAction">
@@ -9,8 +10,8 @@
             {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
                 <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
             <span class="col-sm-7">{{action}}</span>
-            <span class="col-sm-2"></span>
-            <span class="col-sm-2">{{actors}}</span>
+            <span class="col-sm-2">{{comment}}</span>
+            <span class="col-sm-2">{{actorsString}}</span>
         </div>
         {{#if actionEdit}}
             <div class="post" id="editDiv">
@@ -49,4 +50,16 @@
             <button type="button" id="geheim" class="btn pull-right"><span class="glyphicon glyphicon-eye-close"></span> Geheim </button>
         </form>
     </div>
+</template>
+
+<template name="displayFinishedActions">
+    {{#each userAction}}
+        <div class="post" id="actionEntry" style="{{actionStatus}}">
+            {{#if isHidden}}<span class="col-sm-1 glyphicon glyphicon-eye-close"></span>{{else}}
+                <span class="col-sm-1 glyphicon glyphicon-eye-open"></span>{{/if}}
+            <span class="col-sm-7">{{action}}</span>
+            <span class="col-sm-2">{{comment}}</span>
+            <span class="col-sm-2">{{actorsString}}</span>
+        </div>
+    {{/each}}
 </template>
