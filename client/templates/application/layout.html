@@ -25,6 +25,7 @@
           {{#if isAdmin}}<li><a href="{{pathFor 'adminUser'}}">User-Übersicht</a></li>{{/if}}
           <li><a href="{{pathFor 'playerAction'}}">Handlungen</a></li>
           {{#if isAdmin}}<li><a href="{{pathFor 'adminActions'}}">Handlungsverwaltung</a></li>{{/if}}
+          <li><a href="{{pathFor 'publicActions'}}">Offene Handlungen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if isAdmin}}<li><a><button type="button">{{timerChange}}</button></a></li>{{/if}}

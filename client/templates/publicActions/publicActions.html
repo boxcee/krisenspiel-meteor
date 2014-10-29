@@ -1,0 +1,34 @@
+<template name="publicActions">
+    <div class="post">
+        <form class="form-horizontal" role="form" id="actionForm">
+            <div class="form-group">
+                <label for="action" class="col-sm-1 control-label">Handlung</label>
+                <div class="col-sm-11">
+                    <input form="actionForm" class="form-control" id="action">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="actors" class="col-sm-1 control-label">Akteure</label>
+                <div class="col-sm-11">
+                    <input class="form-control" type="text" id="actors">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="filter" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <button type="button">Filtern</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{#each publicAction}}
+        <div class="post">
+            <div class="col-md-10">
+                {{action}}
+            </div>
+            <div class="col-md-2">
+                {{actorsString}}
+            </div>
+        </div>
+    {{/each}}
+</template>
